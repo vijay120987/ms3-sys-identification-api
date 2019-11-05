@@ -1,0 +1,104 @@
+#%RAML 1.0
+title: ms3-contact-api
+baseUri: https://localhost:8081/api/ms3/contact
+version: 1.0
+protocols: [ HTTPS ]
+
+types:
+  identificationTypes:
+    properties:
+      Identification:
+        type: !include dataTypes/identificationDataType.raml
+     
+
+/identification:
+  post:
+    body:
+      application/json:
+        type: identificationTypes
+        example: !include examples/identification.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/201.json
+      400:
+        body:
+          application/json:
+            example: !include examples/400.json
+      401:
+        body:
+          application/json:
+            example: !include examples/401.json              
+      500:
+        body:
+          application/json:
+            example: !include examples/500.json
+  /{identificationId}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/identification.json                
+        400:
+          body:
+            application/json:
+              example: !include examples/400.json
+        401:
+          body:
+            application/json:
+              example: !include examples/401.json              
+        500:
+          body:
+            application/json:
+              example: !include examples/500.json
+    put:
+      body:
+        application/json:
+          type: identificationTypes
+          example: !include examples/identification.json
+      responses:
+        204:
+          body:
+            application/json:
+              example: !include examples/204.json                
+        400:
+          body:
+            application/json:
+              example: !include examples/400.json
+        401:
+          body:
+            application/json:
+              example: !include examples/401.json              
+        500:
+          body:
+            application/json:
+              example: !include examples/500.json
+    delete:
+      responses:
+        202:
+          body:
+            application/json:
+              example: !include examples/202.json
+        400:
+          body:
+            application/json:
+              example: !include examples/400.json
+        401:
+          body:
+            application/json:
+              example: !include examples/401.json              
+        500:
+          body:
+            application/json:
+              example: !include examples/500.json                
+
+                
+
+          
+              
+              
+              
+          
+        
